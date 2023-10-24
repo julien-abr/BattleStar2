@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviorTree: {fileID: 1252981932118478260}
+  _target: {fileID: 465293869530502438, guid: 61e79a8b198c4754db802f0506a2cf08, type: 3}
   Thrust: 0
   Thrust2: 0
   m_Float: 0
@@ -77,8 +78,7 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(165.209778,-174.043533)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(2.84519958,106.744507)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(2.19761658,121.781555)"},"ID":2,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"IIM.ModifyFloat","NodeData":{"Offset":"(-121.888008,118.200439)","WatchedFields":["variable"]},"ID":3,"Name":"Modify
-        Thrust","Instant":true,"SharedFloatvariable":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Thrust","IsShared":true,"PropertyMapping":"BattleStar.BattleStarController/Float","PropertyMappingOwner":0,"SinglemValue":12},"OPERATORop":"SET","SharedFloatvalue":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":12}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(222.752838,115.497444)"},"ID":4,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Thrust","IsShared":true,"PropertyMapping":"BattleStar.BattleStarController/Float","PropertyMappingOwner":1,"SinglemValue":12}]}'
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(165.209778,-174.043533)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(2.84519768,106.744507)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(2.19761658,121.781555)"},"ID":2,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"IIM.ModifyFloat","NodeData":{"Offset":"(-121.888008,118.200439)","WatchedFields":["variable"]},"ID":3,"Name":"Thrust","Instant":true,"SharedFloatvariable":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Thrust","IsShared":true,"PropertyMapping":"BattleStar.BattleStarController/Float","PropertyMappingOwner":0,"SinglemValue":12},"OPERATORop":"SET","SharedFloatvalue":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":12}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(156.963379,115.497444)"},"ID":4,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Thrust","IsShared":true,"PropertyMapping":"BattleStar.BattleStarController/Float","PropertyMappingOwner":1,"SinglemValue":12},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"target","IsShared":true,"PropertyMapping":"BattleStar.BattleStarController/gameObject","PropertyMappingOwner":2,"GameObjectmValue":3}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -87,6 +87,8 @@ MonoBehaviour:
         unityObjects:
         - {fileID: 5204570988580209878}
         - {fileID: 5204570988580209878}
+        - {fileID: 5204570988580209878}
+        - {fileID: 465293869530502438, guid: 61e79a8b198c4754db802f0506a2cf08, type: 3}
         byteData: 
         byteDataArray: 
       Version: 1.7.7
