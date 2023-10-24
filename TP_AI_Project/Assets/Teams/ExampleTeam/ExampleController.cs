@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime;
 using UnityEngine;
 using DoNotModify;
 
@@ -7,7 +8,6 @@ namespace ExampleTeam {
 
 	public class ExampleController : BaseSpaceShipController
 	{
-
 		public override void Initialize(SpaceShipView spaceship, GameData data)
 		{
 		}
