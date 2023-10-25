@@ -16,10 +16,10 @@ namespace BattleStar {
 		private SpaceShipView _spaceShipEnemy;
 
 		//Blackboard variables, [UpdateInput]
-		private float _thrust = 1.0f; 
-		public float Thrust { get { return _thrust; } set { _thrust = value; } } 
+		private float _thrust = 1; 
+		public float Thrust { get { return _thrust; }} 
 		private float _targetOrient; 
-		public float TargetOrient { get { return _thrust; } set { _thrust = value; } } 
+		public float TargetOrient { get { return _targetOrient; } set { _targetOrient = value; } } 
 		private bool _needShoot;
 		private bool _dropMine; 
 		public bool DropMine { get { return _dropMine; } set { _dropMine = value; } } 
