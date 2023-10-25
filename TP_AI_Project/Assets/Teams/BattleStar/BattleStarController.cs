@@ -71,7 +71,7 @@ namespace BattleStar {
 		{
 			_targetOrientToNearestWaypoint = AimingHelpers.ComputeSteeringOrient(spaceship, NearestWaypoint);
 			_targetOrientToEnemy = AimingHelpers.ComputeSteeringOrient(spaceship, data.GetSpaceShipForOwner(_spaceShipOwnerEnemy).Position);
-			_nearestWaypoint = FindNearestWayPointHelper.actualNearestWaypoint(_gameData, spaceship, _spaceShipOwner);
+			_nearestWaypoint = FindPositionHelper.actualNearestWaypoint(_gameData, spaceship, _spaceShipOwner);
 			_needShoot = AimingHelpers.CanHit(spaceship, _spaceShipEnemy.Position, _spaceShipEnemy.Velocity, 0.15f);
 			return new InputData(_thrust, _targetOrient, _needShoot, _dropMine, _fireShockwave);
 		}

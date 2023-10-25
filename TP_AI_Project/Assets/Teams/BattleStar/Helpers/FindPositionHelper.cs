@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BattleStar
 {
-    public static class FindNearestWayPointHelper
+    public static class FindPositionHelper
     {
         public static Vector2 actualNearestWaypoint(GameData gameData, SpaceShipView spaceShipView, int spaceShipOwner)
         {
@@ -28,6 +28,8 @@ namespace BattleStar
 
             return nearestPos;
         }
+
+        
     }
 
 }
