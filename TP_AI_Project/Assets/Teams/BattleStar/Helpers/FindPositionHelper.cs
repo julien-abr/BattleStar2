@@ -29,6 +29,10 @@ namespace BattleStar
             return nearestPos;
         }
 
+        public static float DistanceBtwPlayers(GameData gameData, int spaceShipOwner, int spaceShipOwnerEnemy)
+        {
+            return Vector2.Distance(gameData.SpaceShips[spaceShipOwner].Position, gameData.SpaceShips[spaceShipOwnerEnemy].Position);
+        }
         
     }
 
