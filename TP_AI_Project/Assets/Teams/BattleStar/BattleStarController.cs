@@ -9,6 +9,7 @@ namespace BattleStar {
 	public class BattleStarController : BaseSpaceShipController
 	{
 		[SerializeField] private BehaviorTree behaviorTree;
+		[SerializeField] private GameObject _target;
 		public float Thrust;
 		public float Thrust2;
 		
