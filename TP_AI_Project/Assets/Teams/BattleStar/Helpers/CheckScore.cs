@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using DoNotModify;
 using UnityEngine;
 
-public class CheckScore : MonoBehaviour
+namespace BattleStar
 {
-    public bool IsWining(GameData gameData, int spaceShipOwner, int spaceShipOwnerEnemy)
+    public static class CheckScore
     {
-        if (gameData.SpaceShips[spaceShipOwner].Score > gameData.SpaceShips[spaceShipOwnerEnemy].Score)
+        public static bool IsWining(GameData gameData, int spaceShipOwner, int spaceShipOwnerEnemy)
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            return gameData.SpaceShips[spaceShipOwner].Score > gameData.SpaceShips[spaceShipOwnerEnemy].Score;
         }
     }
 }
+

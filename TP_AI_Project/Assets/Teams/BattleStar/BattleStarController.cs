@@ -16,12 +16,11 @@ namespace BattleStar {
 		private SpaceShipView _spaceShipEnemy;
 
 		//Blackboard variables, [UpdateInput]
-		private float _thrust; 
+		private float _thrust = 1.0f; 
 		public float Thrust { get { return _thrust; } set { _thrust = value; } } 
 		private float _targetOrient; 
 		public float TargetOrient { get { return _thrust; } set { _thrust = value; } } 
-		private bool _needShoot; 
-		public bool NeedShoot { get { return _needShoot; } set { _needShoot = value; } } 
+		private bool _needShoot;
 		private bool _dropMine; 
 		public bool DropMine { get { return _dropMine; } set { _dropMine = value; } } 
 		private bool _fireShockwave; 
@@ -35,7 +34,7 @@ namespace BattleStar {
 		
 		//Blackboard variables, [GameData]
 		public float TimeLeft { get { return _gameData.timeLeft; } } 
-		public int Score { get { return _gameData.SpaceShips[_spaceShipOwner].Score; }} 
+		public bool isWinning { get { return CheckScore.IsWining(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy); }} 
 		
 		public float Energy { get { return _gameData.SpaceShips[_spaceShipOwner].Energy; }} 
 		
@@ -51,15 +50,14 @@ namespace BattleStar {
 		{
 			_spaceShipOwner = spaceship.Owner;
 			_spaceShipOwnerEnemy = _spaceShipOwner == 0 ? 1 : 0;
+			_spaceShipEnemy = data.GetSpaceShipForOwner(_spaceShipOwnerEnemy);
 			_gameData = data;
 		}
 
 		public override InputData UpdateInput(SpaceShipView spaceship, GameData data)
 		{
-			_spaceShipEnemy = data.GetSpaceShipForOwner(1 - spaceship.Owner);
 			_targetOrientToNearestWaypoint = AimingHelpers.ComputeSteeringOrient(spaceship, NearestWaypoint);
-			//float thrust = 1.0f;
-			//float targetOrient = spaceship.Orientation + 90.0f;
+			_nearestWaypoint = FindNearestWayPointHelper.actualNearestWaypoint(_gameData, spaceship, _spaceShipOwner);
 			_needShoot = AimingHelpers.CanHit(spaceship, _spaceShipEnemy.Position, _spaceShipEnemy.Velocity, 0.15f);
 			return new InputData(_thrust, _targetOrient, _needShoot, _dropMine, _fireShockwave);
 		}
