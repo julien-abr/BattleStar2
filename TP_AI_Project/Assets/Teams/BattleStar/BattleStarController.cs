@@ -43,6 +43,8 @@ namespace BattleStar {
 		//Blackboard variables, [GameData]
 		public float TimeLeft { get { return _gameData.timeLeft; } } 
 		public bool isWinning { get { return CheckScore.IsWining(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy); }} 
+		public bool CanChockwave {get { return CanShockwave.LaunchShockWave(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy, ShockwaveRadius); }}
+		public float DistanceBtwPlayers; 
 		
 		public bool HaveAllWaypoints { get { return HavingAllWaypoint.AllWaypoint(_gameData, _spaceShipOwner); } } 
 		
