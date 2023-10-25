@@ -24,15 +24,9 @@ namespace BattleStar
                         nearestPos = gameData.WayPoints[i].Position;
                     } 
                 }
-                else
-                {
-                    continue;
-                }
-            
             }
 
             return nearestPos;
-
         }
     }
 
