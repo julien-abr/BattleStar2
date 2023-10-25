@@ -46,9 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviorTree: {fileID: 1252981932118478260}
-  Thrust: 0
-  Thrust2: 0
-  m_Float: 0
 --- !u!114 &1252981932118478260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +61,7 @@ MonoBehaviour:
   startWhenEnabled: 1
   asynchronousLoad: 0
   pauseWhenDisabled: 0
-  restartWhenComplete: 1
+  restartWhenComplete: 0
   logTaskChanges: 0
   group: 0
   resetValuesOnRestart: 0
