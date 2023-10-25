@@ -16,8 +16,10 @@ namespace BattleStar {
 		public float Float { get { return m_Float; } set { m_Float = value; } } 
 		public override void Initialize(SpaceShipView spaceship, GameData data)
 		{ 
-			var thrust = (SharedFloat)behaviorTree.GetVariable("Thrust");
+			var thrust = (SharedFloat)behaviorTree.GetVariable("Test2");
 			Thrust2 = thrust.Value;
+			//var thrust2 = (SharedFloat)behaviorTree.SetVariable("Thrust", );
+			//GameManager.Instance.GetGameData().WayPoints[0].Position;
 		}
 
 		public override InputData UpdateInput(SpaceShipView spaceship, GameData data)
