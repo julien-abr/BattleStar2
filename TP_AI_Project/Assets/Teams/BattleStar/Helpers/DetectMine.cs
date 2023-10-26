@@ -11,7 +11,12 @@ namespace BattleStar
         public static bool MineDetected(GameData gameData, int spaceShipOwner)
         {
             Vector2 _cirlcePos = gameData.SpaceShips[spaceShipOwner].Position + new Vector2(1f, 0);
-            var hitColliders = Physics2D.OverlapCircle(_cirlcePos, 1f,  13);
+            var hitColliders = Physics2D.OverlapCircle(_cirlcePos, 1f,  LayerMask.GetMask("Mine"));
+            if (hitColliders != null)
+            {
+                Debug.DrawLine(_cirlcePos, hitColliders.transform.position, Color.red);
+
+            }
             return hitColliders;
         }
 
