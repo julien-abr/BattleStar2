@@ -39,9 +39,12 @@ namespace BattleStar {
 		public bool FireShockwave { get { return _fireShockwave; } set { _fireShockwave = value; } } 
 		
 		//Blackboard variables, [Helpers]
-		public bool MineDetected => DetectMine.MineDetected(_gameData, _spaceShipOwner);
+		public bool MineDetected => DetectMine.MineDetectedBox(_gameData, _spaceShipOwner, this);
 		public Vector2 NearestWaypointEnemy => PositionHelper.FindNearestWaypointEnemy(_gameData, _spaceShip, _spaceShipOwnerEnemy);
-		public Vector2 NearestWaypointNeutral => PositionHelper.FindNearestWaypointNeutral(_gameData, _spaceShip); 
+		public Vector2 NearestWaypointNeutral => PositionHelper.FindNearestWaypointNeutral(_gameData, _spaceShip);
+
+		private Vector2 _nearestMine;
+		public Vector2 NearestMine => _nearestMine; 
 
 		private float _targetOrientToNearestWaypointEnemy; 
 		public float TargetOrientToNearestWaypointEnemy { get { return _targetOrientToNearestWaypointEnemy; } set { _targetOrientToNearestWaypointEnemy = value; } } 
@@ -86,6 +89,8 @@ namespace BattleStar {
 			}
 			_currentNumberOfWaypoint = waypoints;
 		}
+
+		public void SetNearestMine(Vector2 minePos) { _nearestMine = minePos; }
 		
 		#endregion
 		public override void Initialize(SpaceShipView spaceship, GameData data)
@@ -104,13 +109,8 @@ namespace BattleStar {
 			_targetOrientToNearestWaypointNeutral = AimingHelpers.ComputeSteeringOrient(spaceship, NearestWaypointNeutral);
 			_targetOrientToEnemy = AimingHelpers.ComputeSteeringOrient(spaceship, data.GetSpaceShipForOwner(_spaceShipOwnerEnemy).Position);
 			_canShoot = AimingHelpers.CanHit(spaceship, _spaceShipEnemy.Position, _spaceShipEnemy.Velocity, 0.15f);
-			bool shootResult =_canShoot && _needShoot;
-			
-			if (MineDetected)
-			{
-				Debug.Log("Mine");
-			}
-	
+			bool shootResult =_canShoot && _needShoot || NeedShoot && MineDetected;
+
 			return new InputData(_thrust, _targetOrient, shootResult, _dropMine, _fireShockwave);
 		}
 		
