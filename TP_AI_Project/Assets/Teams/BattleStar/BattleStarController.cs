@@ -27,21 +27,21 @@ namespace BattleStar {
 
 		//Blackboard variables, [UpdateInput]
 		private float _thrust = 1; 
-		public float Thrust { get { return _thrust; }} 
+		public float Thrust => _thrust;  
 		private float _targetOrient; 
 		public float TargetOrient { get { return _targetOrient; } set { _targetOrient = value; } }
 		private bool _canShoot;
 		private bool _needShoot;
 		public bool NeedShoot { get { return _needShoot; } set { _needShoot = value; } } 
-		private bool _dropMine; 
-		private bool _canDropMine; 
-		public bool CanDropMine { get { return _canDropMine; } set { _canDropMine = value; } } 
+		private bool _dropMine;
+		public bool CanDropMine { get { return _dropMine; } set { _dropMine = value; } } 
 		private bool _fireShockwave; 
 		public bool FireShockwave { get { return _fireShockwave; } set { _fireShockwave = value; } } 
 		
 		//Blackboard variables, [Helpers]
-		public Vector2 NearestWaypointEnemy { get { return PositionHelper.FindNearestWaypointEnemy(_gameData, _spaceShip, _spaceShipOwnerEnemy); }}
-		public Vector2 NearestWaypointNeutral { get { return PositionHelper.FindNearestWaypointNeutral(_gameData, _spaceShip); } }
+		public bool MineDetected => DetectMine.MineDetected(_gameData, _spaceShipOwner);
+		public Vector2 NearestWaypointEnemy => PositionHelper.FindNearestWaypointEnemy(_gameData, _spaceShip, _spaceShipOwnerEnemy);
+		public Vector2 NearestWaypointNeutral => PositionHelper.FindNearestWaypointNeutral(_gameData, _spaceShip); 
 
 		private float _targetOrientToNearestWaypointEnemy; 
 		public float TargetOrientToNearestWaypointEnemy { get { return _targetOrientToNearestWaypointEnemy; } set { _targetOrientToNearestWaypointEnemy = value; } } 
@@ -52,25 +52,30 @@ namespace BattleStar {
 		public float TargetOrientToEnemy { get { return _targetOrientToEnemy; } set { _targetOrientToEnemy = value; } } 
 		
 		//Blackboard variables, [GameData]
-		public int WaypointsBeforeMine { get { return _numberOfWaypointBeforeMine;  } }
+		public int WaypointsBeforeMine => _numberOfWaypointBeforeMine;  
+		public float TimeLeft => _gameData.timeLeft;  
+		public bool isWinning => ScoreHelper.IsWining(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy);
+		public bool CanChockwave => CanPerformActionHelper.CanShockWave(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy, ShockwaveRadius); 
+		public float DistanceBtwPlayers => PositionHelper.DistanceBtwPlayers(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy);
+		public bool HaveAllWaypoints => WaypointHelper.HavingAllWaypoint(_gameData, _spaceShipOwner);
+		public bool EnemyHasWaypoint => WaypointHelper.EnemyHasWaypoint(_gameData, _spaceShipOwnerEnemy);
+		public bool NeutralWaypointExist => WaypointHelper.NeutralWaypointExist(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy);
+		public float MineEnergyCost =>_gameData.SpaceShips[_spaceShipOwner].MineEnergyCost;
+		public float ShootEnergyCost => _gameData.SpaceShips[_spaceShipOwner].ShootEnergyCost;
+		public float ShockwaveEnergyCost => _gameData.SpaceShips[_spaceShipOwner].ShockwaveEnergyCost;
+		public float Energy => _gameData.SpaceShips[_spaceShipOwner].Energy;
+		public float HitPenaltyCountdown => _gameData.SpaceShips[_spaceShipOwner].HitPenaltyCountdown; 
+		public float StunPenaltyCountdown => _gameData.SpaceShips[_spaceShipOwner].StunPenaltyCountdown;
+		public int Waypoints => _gameData.SpaceShips[_spaceShipOwner].WaypointScore;
+		public int Score => _gameData.SpaceShips[_spaceShipOwner].Score;
+		public int HitScore => _gameData.SpaceShips[_spaceShipOwner].HitScore;
+		public float EnemyEnergy =>_gameData.SpaceShips[_spaceShipOwnerEnemy].Energy;
+		public float EnemyHitPenaltyCountdown =>_gameData.SpaceShips[_spaceShipOwnerEnemy].HitPenaltyCountdown;
+		public float EnemyStunPenaltyCountdown =>_gameData.SpaceShips[_spaceShipOwnerEnemy].StunPenaltyCountdown;
+		public int EnemyWaypoints => _gameData.SpaceShips[_spaceShipOwnerEnemy].WaypointScore;
+		public int EnemyScore => _gameData.SpaceShips[_spaceShipOwnerEnemy].Score;
+		public int EnemyHitScore => _gameData.SpaceShips[_spaceShipOwnerEnemy].HitScore;
 
-		public float TimeLeft { get { return _gameData.timeLeft; } } 
-		public bool isWinning { get { return ScoreHelper.IsWining(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy); }} 
-		public bool CanChockwave {get { return CanPerformActionHelper.CanShockWave(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy, ShockwaveRadius); }}
-		public float DistanceBtwPlayers {get { return PositionHelper.DistanceBtwPlayers(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy); }}
-		public bool HaveAllWaypoints { get { return WaypointHelper.HavingAllWaypoint(_gameData, _spaceShipOwner); } }
-		public bool EnemyHasWaypoint { get { return WaypointHelper.EnemyHasWaypoint(_gameData, _spaceShipOwnerEnemy); } }
-		public bool NeutralWaypointExist { get { return WaypointHelper.NeutralWaypointExist(_gameData, _spaceShipOwner, _spaceShipOwnerEnemy); } }
-		public float MineEnergyCost { get { return _gameData.SpaceShips[_spaceShipOwner].MineEnergyCost; } }
-		public float ShootEnergyCost { get { return _gameData.SpaceShips[_spaceShipOwner].ShootEnergyCost; } }
-		public float ShockwaveEnergyCost { get { return _gameData.SpaceShips[_spaceShipOwner].ShockwaveEnergyCost; } }
-		public float Energy { get { return _gameData.SpaceShips[_spaceShipOwner].Energy; }}
-		public float HitPenaltyCountdown { get { return _gameData.SpaceShips[_spaceShipOwner].HitPenaltyCountdown; }}
-		public float StunPenaltyCountdown { get { return _gameData.SpaceShips[_spaceShipOwner].StunPenaltyCountdown; }} 
-		public float EnemyEnergy { get { return _gameData.SpaceShips[_spaceShipOwnerEnemy].Energy; }}
-		public float EnemyHitPenaltyCountdown { get { return _gameData.SpaceShips[_spaceShipOwnerEnemy].HitPenaltyCountdown; }}
-		public float EnemyStunPenaltyCountdown { get { return _gameData.SpaceShips[_spaceShipOwnerEnemy].StunPenaltyCountdown; }} 
-		
 		#region function
 		public void OnValueChangedWaypoints()
 		{
@@ -100,9 +105,13 @@ namespace BattleStar {
 			_targetOrientToEnemy = AimingHelpers.ComputeSteeringOrient(spaceship, data.GetSpaceShipForOwner(_spaceShipOwnerEnemy).Position);
 			_canShoot = AimingHelpers.CanHit(spaceship, _spaceShipEnemy.Position, _spaceShipEnemy.Velocity, 0.15f);
 			bool shootResult =_canShoot && _needShoot;
-			bool mineResult = _dropMine && CanDropMine;
+			
+			if (MineDetected)
+			{
+				Debug.Log("Mine");
+			}
 	
-			return new InputData(_thrust, _targetOrient, shootResult, mineResult, _fireShockwave);
+			return new InputData(_thrust, _targetOrient, shootResult, _dropMine, _fireShockwave);
 		}
 		
 		
