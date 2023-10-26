@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BattleStar
 {
-    public static class CheckScore
+    public static class ScoreHelper
     {
         public static bool IsWining(GameData gameData, int spaceShipOwner, int spaceShipOwnerEnemy)
         {
