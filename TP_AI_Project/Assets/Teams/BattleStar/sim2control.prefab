@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5313186467603970455}
   - component: {fileID: 1252981932118478260}
   m_Layer: 0
-  m_Name: BattleStarController
+  m_Name: sim2control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
