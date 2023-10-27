@@ -39,15 +39,12 @@ namespace BattleStar {
 		public bool FireShockwave { get { return _fireShockwave; } set { _fireShockwave = value; } } 
 		
 		//Blackboard variables, [Helpers]
-		public bool MineDetected => DetectMine.MineDetectedBox(_gameData, _spaceShipOwner, this,_distanceToShootMine );
+		public bool MineDetected => DetectMine.MineDetectedBox(_gameData, _spaceShipOwner, this, 1.7);
 		public Vector2 NearestWaypointEnemy => PositionHelper.FindNearestWaypointEnemy(_gameData, _spaceShip, _spaceShipOwnerEnemy);
 		public Vector2 NearestWaypointNeutral => PositionHelper.FindNearestWaypointNeutral(_gameData, _spaceShip);
 
 		private Vector2 _nearestMine;
 		public Vector2 NearestMine => _nearestMine; 
-		private float _distanceToShootMine; 
-		public float DistanceToShootMine { get { return _distanceToShootMine; } set { _distanceToShootMine = value; } } 
-		
 
 		private float _targetOrientToNearestWaypointEnemy; 
 		public float TargetOrientToNearestWaypointEnemy { get { return _targetOrientToNearestWaypointEnemy; } set { _targetOrientToNearestWaypointEnemy = value; } } 
