@@ -20,9 +20,9 @@ namespace BattleStar
         //     return hitColliders;
         // }
         
-        public static bool MineDetectedBox(GameData gameData, int spaceShipOwner, BattleStarController controller)
+        public static bool MineDetectedBox(GameData gameData, int spaceShipOwner, BattleStarController controller, float distance)
         { 
-            RaycastHit2D hit = Physics2D.Raycast(gameData.SpaceShips[spaceShipOwner].Position,  gameData.SpaceShips[spaceShipOwner].LookAt, 3, LayerMask.GetMask("Mine"));
+            RaycastHit2D hit = Physics2D.Raycast(gameData.SpaceShips[spaceShipOwner].Position,  gameData.SpaceShips[spaceShipOwner].LookAt, distance, LayerMask.GetMask("Mine"));
             if (hit.collider != null)
             {
                 Debug.DrawLine(gameData.SpaceShips[spaceShipOwner].Position, hit.collider.transform.position, Color.green);
